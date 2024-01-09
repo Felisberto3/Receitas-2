@@ -44,7 +44,8 @@ class ReceitasController extends Controller
             $newReceita->save();
             
             
-            return view('layouts.home')->with('receitas',$receitas );
+            return view('layouts.home');
+            // return view('layouts.home')->with('receitas',$receitas );
 
         } catch (ValidationException $e) {
             $errors = $e->validator->errors()->messages();

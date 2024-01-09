@@ -18,8 +18,9 @@ class LoginController extends Controller
     public function index() 
     {
         if (Auth::id()) {
-            $receitas = Receitas::all();
-            return view('layouts.home')->with('receitas',$receitas );
+            // $receitas = Receitas::all();
+            return view('layouts.home');
+            // return view('layouts.home')->with('receitas',$receitas );
         }
         return view('auth.login');
     }

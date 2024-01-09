@@ -14,10 +14,10 @@ class HomeController extends Controller
     {
         if (Auth::id()) {
 
-           
-                $receitas = Receitas::all();
+                //  $receitas = Receitas::all();
 
-                return view('layouts.home')->with('receitas',$receitas );
+                return view('layouts.home');
+                // return view('layouts.home')->with('receitas',$receitas );
         }
 
     }
@@ -26,9 +26,10 @@ class HomeController extends Controller
     public function show()
     {
         if (Auth::id()) {
-            $receitas = Receitas::all();
+            // $receitas = Receitas::all();
             
-            return view('layouts.home')->with('receitas',$receitas );
+            return view('layouts.home');
+            // return view('layouts.home')->with('receitas',$receitas );
         }
        return  view('app');
     }
