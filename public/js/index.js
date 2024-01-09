@@ -15,3 +15,11 @@ window.addEventListener("click", (event) => {
     modal.style.display = "none";
   }
 });
+
+// Adicione animações ou interações com JavaScript aqui, por exemplo:
+const card = document.getElementById('card');
+
+// Exemplo de animação de fade in/out ao clicar no card
+card.addEventListener('click', () => {
+  card.classList.toggle('fade');
+});

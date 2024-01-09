@@ -16,6 +16,7 @@ class HomeController extends Controller
 
                 //  $receitas = Receitas::all();
 
+                return view('layouts.Home')->with('receitas',$receitas );
                 return view('layouts.home');
                 // return view('layouts.home')->with('receitas',$receitas );
         }
@@ -28,6 +29,7 @@ class HomeController extends Controller
         if (Auth::id()) {
             // $receitas = Receitas::all();
             
+            return view('layouts.Home')->with('receitas',$receitas );
             return view('layouts.home');
             // return view('layouts.home')->with('receitas',$receitas );
         }

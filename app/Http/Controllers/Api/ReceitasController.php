@@ -44,6 +44,7 @@ class ReceitasController extends Controller
             $newReceita->save();
             
             
+            return view('layouts.Home')->with('receitas',$receitas );
             return view('layouts.home');
             // return view('layouts.home')->with('receitas',$receitas );
 

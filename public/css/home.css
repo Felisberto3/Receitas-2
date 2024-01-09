@@ -274,3 +274,86 @@ footer{
     }
   }
   
+.containerDatalhes{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .cards{
+    align-items: center;
+    cursor: pointer;
+    width: 500px;
+    border: 2px solid #da8920;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px;
+    display: flex;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.329);
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .cards:hover {
+    transform: scale(1.05);
+  }
+  
+ .cards img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 0 0 8px;
+    object-fit: cover;
+  }
+  
+  .details {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    padding-left: 1rem;
+  }
+  
+  .details h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+  
+  .details p {
+    font-size: 1.1em;
+    color: #444;
+  }
+  .extra-details {
+    display: none;
+    padding-top: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  .AllStyles {
+    width: 400px;
+    height: 40px;
+    background: #dbdada
+  }
+  .igredientes {
+
+  }
+  .tempo {
+    width: 400px;
+    height: 40px;
+    background: #f3f0f0
+    
+  }
+
+  .metodo {
+    
+  }
+
+  .getABackHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-decoration: none;
+  height: 2rem;    
+  }
