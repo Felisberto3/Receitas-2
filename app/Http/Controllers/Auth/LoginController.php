@@ -33,7 +33,7 @@ class LoginController extends Controller
             $user = User::where('email', $credentials['email']);
             $receitas = Receitas::all();
 
-            return view('layouts.home')->with( 'receitas',$receitas); // Redirecionar para a página desejada após o login
+            return view('layouts.Home')->with( 'receitas',$receitas); // Redirecionar para a página desejada após o login
         }
 
         return redirect('/login')->with('error', 'Credenciais inválidas');

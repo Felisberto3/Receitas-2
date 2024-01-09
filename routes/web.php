@@ -67,6 +67,6 @@ Route::post('logout', [ LoginController::class, 'logout' ])->name('logout');
 
 Route::post('/receitas', [ReceitasController::class,'store'])->name('receitas');
 
-Route::get('detalhes/{receitaId}', [DetalhesController::class, 'index'])->name('detalhes');
+Route::get('details/{receitaId}', [DetalhesController::class, 'index'])->name('detalhes');
 
 
