@@ -32,6 +32,8 @@ class RegisterController extends Controller
     {
         if (! Auth::id()) {
             return view('layouts.Home');
+        if (Auth::id()) {
+            return view('layouts.home');
         }
         return view('auth.signUp');
     }
