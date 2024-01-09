@@ -13,6 +13,7 @@ class DetalhesController extends Controller
     public function index($receitaId)
     {
         $receita = Receitas::find($receitaId);
+     
         
         return view('layouts.detalhes')->with('receita', $receita);
     }
