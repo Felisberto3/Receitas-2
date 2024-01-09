@@ -18,10 +18,10 @@
             <h2>{{$receita-> title }}</h2>
             <p>{{$receita-> user_id }}</p>
         </div>
-        <div>igrediente:  {{$receita-> ingredient }}</div>
-        <div> tempo de pre: {{$receita-> preparationTime }}</div>
-        <div> metodo: {{$receita-> preparationMethod }}</div>
-        <a href="{{ route('home')}} ">Inicio</a>
+        <div class='igredientes AllStyles'>Igrediente:  {{$receita-> ingredient }}</div>
+        <div class='tempo'> Tempo de pre: {{$receita-> preparationTime }}</div>
+        <div class='metodo AllStyles'> Metodo: {{$receita-> preparationMethod }}</div>
+        <a href="{{ route('home')}} " class='getABackHome'>Inicio</a>
     </div>
 </div>
 </body>

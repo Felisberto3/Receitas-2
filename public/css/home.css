@@ -282,6 +282,7 @@ footer{
   justify-content: center;
 }
   .cards{
+    align-items: center;
     cursor: pointer;
     width: 500px;
     border: 2px solid #da8920;
@@ -302,18 +303,22 @@ footer{
     width: 100%;
     height: auto;
     border-radius: 8px 0 0 8px;
+    object-fit: cover;
   }
   
   .details {
-    padding: 15px;
+    display: flex;
+    align-items: center;
+    width: 500px;
+    padding-left: 1rem;
   }
   
-  h2 {
+  .details h2 {
     margin-top: 0;
     font-size: 1.5em;
   }
   
-  p {
+  .details p {
     font-size: 1.1em;
     color: #444;
   }
@@ -324,4 +329,31 @@ footer{
   
   .hidden {
     display: none;
+  }
+  .AllStyles {
+    width: 400px;
+    height: 40px;
+    background: #dbdada
+  }
+  .igredientes {
+
+  }
+  .tempo {
+    width: 400px;
+    height: 40px;
+    background: #f3f0f0
+    
+  }
+
+  .metodo {
+    
+  }
+
+  .getABackHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-decoration: none;
+  height: 2rem;    
   }
