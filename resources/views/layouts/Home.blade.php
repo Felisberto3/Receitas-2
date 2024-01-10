@@ -14,13 +14,14 @@
        <header>
        <span class='Logo'>Rece<strong>itas</strong> </span>
        <ul class='ulHeader'>
-        <li class='active'>Inicio</li>
-        <li>Minhas Receitas</li>
-        <li>Notificações</li>
-        <li>Detalhes</li>
+        <!-- <li class='active'>Inicio</li> -->
+        <li><a href="{{ route('home')}}"> Inicio</a></li>
+        <li><a href="{{ route('myReceitas')}}"> Minhas Receitas</a></li>
+        <li><a href="{{ route('notification')}}"> Notificações</a></li>
+        <li><a href=""> Perfil</a></li>
        </ul>
         <div class="singInOut">
-       
+            <span>Olá {{ $userData -> first_name}} {{ $userData -> last_name}}</span>
             <nav>
                 @auth
                     <form action="{{ route('logout') }}" method="POST">
@@ -54,11 +55,12 @@
                     <div class="modal-content">
                         <span class="close">&times;</span>
                         <h2>Publicação</h2>
-                        <form method="POST" action="{{ route('receitas')}}">
+                        <form method="POST" action="{{ route('receitas')}}" enctype="multipart/form-data">
                         @csrf
                             <input type="text" name="title" id="title" placeholder="Título">
                             <input type="text" name="ingredient" id="ingredient" placeholder="Igredientes">
-                            <input type="text" name="preparationTime" id="preparationTime" placeholder="Tempo de Cozimento">
+                            <input type="file" name="file" id="file" placeholder="Imagem" >
+                            <input type="time" name="preparationTime" id="preparationTime" placeholder="Tempo de Cozimento">
                             <textarea name="preparationMethod" id="preparationMethod" placeholder="Modo de preparação"></textarea>
                             <button type="submit">Publicar</button>
                         </form>
@@ -70,43 +72,47 @@
                 
                 @foreach (array_reverse($receitas->all()) as $receita)
                 <div class="card">
-
-           
                        <a href="{{ route('detalhes', ['receitaId' => $receita->id ]) }}">  <img  src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> </a>
                         <h2>{{$receita->title}}</h2>
                         <div class="user-rating">
                             <input type="radio" id="star1" name="rating" value="1">
-                            <label for="star1">1</label>
+                            <label onclick='avaliarReceita("1")' for="star1">1</label>
                             <input type="radio" id="star2" name="rating" value="2">
-                            <label for="star2">2</label>
+                            <label onclick='avaliarReceita("2")' for="star2">2</label>
                             <input type="radio" id="star3" name="rating" value="3">
-                            <label for="star3">3</label>
+                            <label onclick='avaliarReceita("3")' for="star3">3</label>
                             <input type="radio" id="star4" name="rating" value="4">
-                            <label for="star4">4</label>
+                            <label onclick='avaliarReceita("4")' for="star4">4</label>
                             <input type="radio" id="star5" name="rating" value="5">
-                            <label for="star5">5</label>
+                            <label onclick='avaliarReceita("5")' for="star5">5</label>
                         </div>
                         <div class="user-datas">
+                        @foreach ($users as $user)
+                            @if ($user->id == $receita->user_id)
                             <div class="imgUser">
-                                <!-- <img src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> -->
-                            {{$userData -> first_name[0]}}{{$userData -> last_name[0]}}
+                              {{$user -> first_name[0]}}{{$user -> last_name[0]}}
                             </div>
                             <div class="userName">
-                                {{$userData -> first_name}} {{$userData -> last_name}}
                             </div>
+                                {{ $user->first_name }} {{ $user->last_name }}
+                            @endif
+                        @endforeach
                         </div>
                         </div>
                     @endforeach
-               
-                
             </div>  
-
             </main>
             <footer>
                 Copyright 2024, All right reserved
             </footer>
 
     </body>
+    
+    <!-- <script>
+        avaliarReceita= () =>{
+            fetch('api')
+        }
+    </script> -->
     <script src="/js/index.js"></script>
     <script src="/js/home.js"></script>
 </html>

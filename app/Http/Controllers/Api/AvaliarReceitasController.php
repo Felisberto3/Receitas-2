@@ -2,27 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Receitas;
+use App\Models\AvaliarReceitas;
 use Illuminate\Http\Request;
 
-class DetalhesController extends Controller
+class AvaliarReceitasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($receitaId)
+    public function index()
     {
-        $receita = Receitas::find($receitaId);
-     
-        return response()->json($receita);
-        
-        // return view('layouts.detalhes')->with('receita', $receita);
+        //
     }
-    
-    public function showDetailPage($receitaId)
-    {
-        return view('layouts.detalhes')->with('receitaId', $receitaId);
-    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -34,17 +26,21 @@ class DetalhesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $score)
     {
-        //
+
+        dd($score);
+            
+        $newReceita = new AvaliarReceitas( $request->all());
+        $newReceita->save();
+
+        return true;
+
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        return AvaliarReceitas::find($id);
     }
 
     /**

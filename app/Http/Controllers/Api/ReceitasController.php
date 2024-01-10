@@ -30,6 +30,7 @@ class ReceitasController extends Controller
      */
     public function store(Request $request)
     {
+        
         try {
             $request->validate([
                 'title' => 'required|string|max:255',
@@ -40,12 +41,20 @@ class ReceitasController extends Controller
 
             $userId = Auth::id();
             
+            $file = $request->file('file');
+            $file->store('news');
+
+            $receita = $request->all();
+
+            $receita['receitaImg'] = $file->hashName();
+
+            dd($receita);
+
+            
             $newReceita = new Receitas(array_merge(['user_id' => $userId ], $request->all()));
             $newReceita->save();
             
-            
-            return view('layouts.home');
-            // return view('layouts.home')->with('receitas',$receitas );
+            return redirect('/home');
 
         } catch (ValidationException $e) {
             $errors = $e->validator->errors()->messages();
@@ -55,9 +64,11 @@ class ReceitasController extends Controller
        
     }
 
-    /**
-     * Display the specified resource.
-     */
+    public function showMyReceitas () 
+    {
+        return view('layouts.myReceitas');
+    }
+
     public function show(string $id)
     {
         // return Receitas::where('id', $id)->firstOrFail();

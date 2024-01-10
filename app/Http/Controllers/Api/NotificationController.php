@@ -1,34 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
-use App\Models\Receitas;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DetalhesController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($receitaId)
+    public function index()
     {
-        $receita = Receitas::find($receitaId);
-     
-        return response()->json($receita);
-        
-        // return view('layouts.detalhes')->with('receita', $receita);
+        //
     }
-    
-    public function showDetailPage($receitaId)
-    {
-        return view('layouts.detalhes')->with('receitaId', $receitaId);
-    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         //
+    }
+    public function showNotification() 
+    {
+        return view('layouts.notications');
     }
 
     /**

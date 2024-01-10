@@ -1,4 +1,14 @@
- 
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
 main {
     width: 100%;
     margin: 0px auto;
@@ -68,7 +78,7 @@ main #publicReceitas {
     align-items: center;
     justify-content: space-between;
     height: 5rem;
-    width: 1000px;
+    width: 74%;
     margin-bottom: 1rem;
     padding: 10px 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -226,6 +236,7 @@ footer{
   }
   
   button:hover {
+    background-color: #eba242;
     background-color: #da8920;
   }
 
@@ -273,4 +284,66 @@ footer{
       width: 80%;
     }
   }
-  
+.headerInit{
+  /* position: fixed; */
+  width: 100%;
+}
+  .initialHome{
+    display: flex;
+    align-items: center;
+    align-items: center;
+    margin-top: 10rem;
+    width: 100%;
+  }
+  .NotifyContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 9rem;
+  }
+  .Notifyheader{
+    top: 0;
+  }
+  .contentNotify{
+    background: #fff;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.360);
+    border-radius: 5px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 4px;
+  }
+  .contentNotify .HotifyHeader{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+  }
+  .contentNotify .HotifyHeader .userImgNotify{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #da8920;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+  .contentNotify .HotifyHeader .userImgNotify img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .contentNotify .HotifyHeader .userDataNotify{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .contentNotify .HotifyHeader .userDataNotify p{
+    font-size: 12px;
+  }

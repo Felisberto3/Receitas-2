@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\api\NotificationController;
 use App\Http\Controllers\Api\ReceitasController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AvaliarReceitasController;
 use App\Http\Controllers\DetalhesController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -65,8 +67,13 @@ Route::post('login', [ LoginController::class, 'login' ]);
 Route::post('logout', [ LoginController::class, 'logout' ])->name('logout');
 
 
-Route::post('/receitas', [ReceitasController::class,'store'])->name('receitas');
+Route::get('receitas', [ReceitasController::class,'index'])->name('receitas');
+Route::post('receitas', [ReceitasController::class,'store']);
+Route::get('myReceitas', [ReceitasController::class,'showMyReceitas'])->name('myReceitas');
 
-Route::get('detalhes/{receitaId}', [DetalhesController::class, 'index'])->name('detalhes');
+Route::get('detalhes/{receitaId}', [DetalhesController::class, 'showDetailPage'])->name('detalhes');
+
+Route::post('avaliar/{score}', [AvaliarReceitasController::class, 'store'])->name('avaliarReceitas');
+Route::get('notifivation', [NotificationController::class, 'showNotification'])->name('notification');
 
 
