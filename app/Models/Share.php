@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class Share extends Model
 {
     protected $fillable = [
-        'type',
-        'notifiedBy_id',
-        'receitas_id',
-        'receitaUserId'
+        'receita_id',
+        'sharedBy_id',
+        'receita_ownerId'
+
     ];
 }

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Notification;
+use App\Models\Receitas;
+use App\Models\Share;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class NotificationController extends Controller
+class ShareController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,35 +22,23 @@ class NotificationController extends Controller
      */
     public function create()
     {
-        //
-    }
-    public function showNotification() 
-    {
-
-        return view('layouts.notications');
-    }
-
-    public function myNotification() {
-        // Notification::find($)
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request,$receitaId)
+    // {
+    //     dd($receitaId);
+    //     new Share(['receita_id'=> $receitaId]);
+    // }
 
     /**
      * Display the specified resource.
      */
-    public function show($userId)
+    public function show(string $id)
     {
-
-        $myNotifications = Notification::all();
-
-        return response()->json($myNotifications);
+        //
     }
 
     /**

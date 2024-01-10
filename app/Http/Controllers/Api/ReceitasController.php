@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use App\Models\Receitas;
+use App\Models\Share;
 use App\Providers\UserDataServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,17 +43,17 @@ class ReceitasController extends Controller
 
             $userId = Auth::id();
             
-            $file = $request->file('file');
-            $file->store('news');
+            $file = $request->file('receitaImg');
+            $caminho = $file ->store('public');
 
             $receita = $request->all();
 
-            $receita['receitaImg'] = $file->hashName();
+            $receita['receitaImg'] = $caminho;
+            $receita['sharedBy'] = 0;
+            $receita['user_id'] = $userId;
 
-            dd($receita);
 
-            
-            $newReceita = new Receitas(array_merge(['user_id' => $userId ], $request->all()));
+            $newReceita = new Receitas($receita);
             $newReceita->save();
             
             return redirect('/home');
@@ -69,9 +71,14 @@ class ReceitasController extends Controller
         return view('layouts.myReceitas');
     }
 
-    public function show(string $id)
+    public function sharing($receitaId,$userId,$receitaUserId)
     {
-        // return Receitas::where('id', $id)->firstOrFail();
+         $newNotification = new Notification(['type'=>'shared','notifiedBy_id'=> $userId,'receitas_id'=>$receitaId,'receitaUserId'=>$receitaUserId]);
+        $newNotification->save();
+        $newSharing = new Share(['receita_id'=>$receitaId,'sharedBy_id'=>$userId]);
+        $newSharing->save();
+
+        return redirect()->back();
     }
 
     /**

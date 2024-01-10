@@ -59,7 +59,7 @@
                         @csrf
                             <input type="text" name="title" id="title" placeholder="Título">
                             <input type="text" name="ingredient" id="ingredient" placeholder="Igredientes">
-                            <input type="file" name="file" id="file" placeholder="Imagem" >
+                            <input type="file" name="receitaImg" id="receitaImg" placeholder="Imagem" >
                             <input type="time" name="preparationTime" id="preparationTime" placeholder="Tempo de Cozimento">
                             <textarea name="preparationMethod" id="preparationMethod" placeholder="Modo de preparação"></textarea>
                             <button type="submit">Publicar</button>
@@ -72,7 +72,12 @@
                 
                 @foreach (array_reverse($receitas->all()) as $receita)
                 <div class="card">
-                       <a href="{{ route('detalhes', ['receitaId' => $receita->id ]) }}">  <img  src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> </a>
+                       <a href="{{ route('detalhes', ['receitaId' => $receita->id ]) }}">
+                       @if(isset($receita->receitaImg ))
+                            <!-- <img  src="public/storage/app/imgs" alt="bkejbew">  -->
+                            <img  src="{{ Storage::url($receita->receitaImg) }}" alt="bkejbew"> 
+                        @endif
+                        </a>
                         <h2>{{$receita->title}}</h2>
                         <div class="user-rating">
                             <input type="radio" id="star1" name="rating" value="1">
@@ -97,6 +102,7 @@
                                 {{ $user->first_name }} {{ $user->last_name }}
                             @endif
                         @endforeach
+                        <div class="share" onclick="sharing('{{ $receita->id }}','{{ $user->id}}','{{$receita->user_id}}')">Partilhar</div>
                         </div>
                         </div>
                     @endforeach
@@ -113,6 +119,13 @@
             fetch('api')
         }
     </script> -->
+
+    <script>
+       const  sharing = async (receitaId,userId,receitaUserId) => {
+            alert('Partilhado com sucesso')
+            const response = await fetch(`http://localhost:8000/api/sharing/${receitaId}/${userId}/${receitaUserId}`)
+        }
+    </script>
     <script src="/js/index.js"></script>
     <script src="/js/home.js"></script>
 </html>

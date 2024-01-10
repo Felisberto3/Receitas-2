@@ -12,6 +12,8 @@ class Receitas extends Model
         'ingredient',
         'preparationTime',
         'preparationMethod',
+        'receitaImg',
+        'sharedBy',
         'user_id',
     ];
 }

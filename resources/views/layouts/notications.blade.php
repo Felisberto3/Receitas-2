@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/css/home.css">  
 
 </head>
-<body>
+<body >
+<body onload="myNotification('{{$userData->id}}', '{{ $users}}')">
     
 <header class="Notifyheader">
     <span class='Logo'>Rece<strong>itas</strong> </span>
@@ -33,36 +34,57 @@
     </div>
 </header>
 <div class="NotifyContainer">
-    <div class="contentNotify">
-        <div class="HotifyHeader">
-            <div class="userImgNotify">
-                <!-- <img src="" alt=""> -->
-                <span>FD</span>
-            </div>
-            <div class="userDataNotify">
-                <span>Nome do cara</span>
-                <p>email do cara</p>
-            </div>        
-        </div>
-        <div class="contextNotify">
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, sed distinctio. </span>
-        </div>
-    </div>
-    <div class="contentNotify">
-        <div class="HotifyHeader">
-            <div class="userImgNotify">
-                <!-- <img src="" alt=""> -->
-                <span>FD</span>
-            </div>
-            <div class="userDataNotify">
-                <span>Nome do cara</span>
-                <p>email do cara</p>
-            </div>        
-        </div>
-        <div class="contextNotify">
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, sed distinctio. </span>
-        </div>
-    </div>
+
+   
+
+    
 </div>
 </body>
+
+<script>
+      const  myNotification = async (userId, users ) => {
+            const response = await fetch(`http://localhost:8000/api/myNoyifies/${userId}`)
+
+            const data = await response.json()
+
+
+            const NotifyContainer = document.querySelector('.NotifyContainer')
+
+            for (const notification of data) {
+                // const notifiedBy_user = users.find(user=> user.id === Number(notifiedBy_id))
+                // console.log(notifiedBy_user);
+                if (notification.receitaUserId == userId) {
+                    if (notification.type =='shared') {
+                        var notifySMS = ` <span>O </span>`
+                    }
+                    
+
+                    NotifyContainer.innerHTML +=  `
+                <div class="contentNotify">
+                        <div class="HotifyHeader">
+                            <div class="userImgNotify">
+                                <!-- <img src="" alt=""> -->
+                                <span>FD</span>
+                            </div>
+                            <div class="userDataNotify">
+                                <span>Nome do cara</span>
+                                <p>email do cara</p>
+                            </div>        
+                        </div>
+                        <div class="contextNotify">
+                            ${notifySMS}
+                        
+                            
+                        </div>
+                    </div>
+                `
+                }
+            }
+            
+
+          
+
+            console.log(data);
+        }
+</script>
 </html>

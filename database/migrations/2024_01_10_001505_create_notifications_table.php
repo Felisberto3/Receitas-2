@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('type');
             $table->string('notifiedBy_id');
             $table->integer('receitas_id');
+            $table->integer('receitaUserId');
+            
             $table->timestamps();
         });
     }

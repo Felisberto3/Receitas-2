@@ -46,7 +46,7 @@
            <div class="card">
 
       
-                  <a href="{{ route('detalhes', ['receitaId' => $receita->id ]) }}">  <img  src="/imgs/pratodecomidafotomarcossantos003.jpg" alt=""> </a>
+                  <a href="{{ route('detalhes', ['receitaId' => $receita->id ]) }}">  <img  src="{{ Storage::url($receita->receitaImg) }}" alt=""> </a>
                    <h2>{{$receita->title}}</h2>
                    <div class="user-rating">
                        <input type="radio" id="star1" name="rating" value="1">

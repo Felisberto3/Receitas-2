@@ -25,7 +25,7 @@ class HomeController extends Controller
 
     public function show()
     {
-        if (Auth::id()) {
+        if ( Auth::id()) {
             
             return view('layouts.home');
         }

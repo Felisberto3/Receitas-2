@@ -65,6 +65,12 @@ class RegisterController extends Controller
  
     }
 
+    public function showUser($userId) 
+    {
+        $user = User::all($userId);
+        return response()->json($user);
+    }
+
 
 
     protected function create(array $data)
