@@ -54,7 +54,7 @@
         <li><a href="{{ route('home')}}"> Inicio</a></li>
         <li><a href="{{ route('myReceitas')}}"> Minhas Receitas</a></li>
         <li><a href="{{ route('notification')}}"> Notificações</a></li>
-        <li><a href=""> Perfil</a></li>
+        <li><a href="{{ route('profile')}}"> Perfil</a></li>
        </ul>
         <div class="singInOut">
             <span>Olá {{ $userData -> first_name}} {{ $userData -> last_name}}</span>
@@ -93,7 +93,9 @@
         const corpoDetalhes = document.querySelector('.corpoDetalhes')
         console.log(result);
         corpoDetalhes.innerHTML +=`
-        <div class="imgCard"></div>
+        <div class="imgCard">
+                
+        </div>
         <div class="tituloDetalhes">${result['title']}</div>
         <div class="tituloDetalhes">Igrediente: ${result['ingredient']}</div>
         <div class="tituloDetalhes">Tempo de Preparo: ${result['preparationTime']}</div>

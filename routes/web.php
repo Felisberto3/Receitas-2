@@ -76,4 +76,6 @@ Route::get('detalhes/{receitaId}', [DetalhesController::class, 'showDetailPage']
 Route::post('avaliar/{score}', [AvaliarReceitasController::class, 'store'])->name('avaliarReceitas');
 Route::get('notifivation', [NotificationController::class, 'showNotification'])->name('notification');
 
+Route::get('profile', [RegisterController::class, 'showProfile'])->name('profile');
+
 

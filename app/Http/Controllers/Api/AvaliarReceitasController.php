@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AvaliarReceitas;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
 class AvaliarReceitasController extends Controller
@@ -26,12 +27,16 @@ class AvaliarReceitasController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $score)
+    public function store( $number,$receitaId,$avaliador,$receitaUserId)
     {
 
-        dd($score);
-            
-        $newReceita = new AvaliarReceitas( $request->all());
+        $newNotification = new Notification(['type'=>'shared','notifiedBy_id'=> $avaliador,'receitas_id'=>$receitaId,'receitaUserId'=>$receitaUserId]);
+        $newNotification->save();
+        $newReceita = new AvaliarReceitas([
+            'score'=>$number,
+            'receita_id'=>$receitaId,
+            'avaliador'=>$avaliador
+        ]);
         $newReceita->save();
 
         return true;

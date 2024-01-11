@@ -18,7 +18,7 @@
         <li><a href="{{ route('home')}}"> Inicio</a></li>
         <li><a href="{{ route('myReceitas')}}"> Minhas Receitas</a></li>
         <li><a href="{{ route('notification')}}"> Notificações</a></li>
-        <li><a href=""> Perfil</a></li>
+        <li><a href="{{ route('profile')}}"> Perfil</a></li>
        </ul>
         <div class="singInOut">
             <span>Olá {{ $userData -> first_name}} {{ $userData -> last_name}}</span>
@@ -81,15 +81,15 @@
                         <h2>{{$receita->title}}</h2>
                         <div class="user-rating">
                             <input type="radio" id="star1" name="rating" value="1">
-                            <label onclick='avaliarReceita("1")' for="star1">1</label>
+                            <label onclick='avaliarReceita("1","{{$userData->id}}","{{$receita->id}}","{{$receita->user_id}}")' for="star1">1</label>
                             <input type="radio" id="star2" name="rating" value="2">
-                            <label onclick='avaliarReceita("2")' for="star2">2</label>
+                            <label onclick='avaliarReceita("2","{{$userData->id}}","{{$receita->id}}","{{$receita->user_id}}")' for="star2">2</label>
                             <input type="radio" id="star3" name="rating" value="3">
-                            <label onclick='avaliarReceita("3")' for="star3">3</label>
+                            <label onclick='avaliarReceita("3","{{$userData->id}}","{{$receita->id}}","{{$receita->user_id}}")' for="star3">3</label>
                             <input type="radio" id="star4" name="rating" value="4">
-                            <label onclick='avaliarReceita("4")' for="star4">4</label>
+                            <label onclick='avaliarReceita("4","{{$userData->id}}","{{$receita->id}}","{{$receita->user_id}}")' for="star4">4</label>
                             <input type="radio" id="star5" name="rating" value="5">
-                            <label onclick='avaliarReceita("5")' for="star5">5</label>
+                            <label onclick='avaliarReceita("5","{{$userData->id}}","{{$receita->id}}","{{$receita->user_id}}")' for="star5">5</label>
                         </div>
                         <div class="user-datas">
                         @foreach ($users as $user)
@@ -124,6 +124,11 @@
        const  sharing = async (receitaId,userId,receitaUserId) => {
             alert('Partilhado com sucesso')
             const response = await fetch(`http://localhost:8000/api/sharing/${receitaId}/${userId}/${receitaUserId}`)
+        }
+
+        const avaliarReceita = async (number, avaliador,receitaId,receitaUserId) => {
+            alert('Avaliado!')
+             await fetch(`http://localhost:8000/api/avaliar/${receitaId}/${avaliador}/${number}/${receitaUserId}`)
         }
     </script>
     <script src="/js/index.js"></script>

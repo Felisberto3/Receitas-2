@@ -44,31 +44,39 @@
 <script>
       const  myNotification = async (userId, users ) => {
             const response = await fetch(`http://localhost:8000/api/myNoyifies/${userId}`)
+            
 
-            const data = await response.json()
+            const allNotifies = await response.json()
 
 
             const NotifyContainer = document.querySelector('.NotifyContainer')
 
-            for (const notification of data) {
-                // const notifiedBy_user = users.find(user=> user.id === Number(notifiedBy_id))
-                // console.log(notifiedBy_user);
-                if (notification.receitaUserId == userId) {
+            for (const notification of allNotifies) {
+                if(notification.receitaUserId === userId){
+                    const { notifiedBy_id } = notification
+
+                    const response2 = await fetch(`http://localhost:8000/api/user/${notifiedBy_id}`)
+
+                    const notifiedUserData= await response2.json()
+
+                    const {first_name,last_name, email } = notifiedUserData[0];
+
                     if (notification.type =='shared') {
-                        var notifySMS = ` <span>O </span>`
+                        var notifySMS = ` <span>${first_name} ${last_name} Partilhou a sua receita</span>`
                     }
-                    
+
+
 
                     NotifyContainer.innerHTML +=  `
-                <div class="contentNotify">
+                    <div class="contentNotify">
                         <div class="HotifyHeader">
                             <div class="userImgNotify">
                                 <!-- <img src="" alt=""> -->
-                                <span>FD</span>
+                                <span>${first_name[0]}${last_name[0]}</span>
                             </div>
                             <div class="userDataNotify">
-                                <span>Nome do cara</span>
-                                <p>email do cara</p>
+                                <span>${first_name} ${last_name}</span>
+                                <p>${email}</p>
                             </div>        
                         </div>
                         <div class="contextNotify">
@@ -77,14 +85,13 @@
                             
                         </div>
                     </div>
-                `
+                    `
+
                 }
-            }
-            
+               
+               
 
-          
-
-            console.log(data);
-        }
+        //     console.log(data);
+        }}
 </script>
 </html>

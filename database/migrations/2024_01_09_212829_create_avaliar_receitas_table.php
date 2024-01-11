@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('score');
             $table->integer('receita_id');
+            $table->integer('avaliador');
             $table->timestamps();
         });
     }

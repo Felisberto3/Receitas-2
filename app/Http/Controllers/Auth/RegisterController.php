@@ -65,9 +65,12 @@ class RegisterController extends Controller
  
     }
 
+    public function showProfile() {
+        return view('layouts.profile');
+    }
     public function showUser($userId) 
     {
-        $user = User::all($userId);
+        $user = User::all();
         return response()->json($user);
     }
 

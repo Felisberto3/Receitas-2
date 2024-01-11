@@ -10,5 +10,6 @@ class AvaliarReceitas extends Model
     protected $fillable = [
         'score',
         'receita_id',
+        'avaliador'
     ];
 }
