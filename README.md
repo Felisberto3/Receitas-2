@@ -66,17 +66,23 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
-
-
-
-
-
-# ##########Instrucção para instalar um projecto laravel 10
-  #  composer install
-  # duplicar o arquivo .env.exemple
-  # gerar a chave com o comando: php artisan key:generate
+# #Instrucção para instalar um projecto laravel 10
+  ```composer install```
+  -[x]duplicar o arquivo .env.exemple
+  # gerar a chave com o comando: 
+  ```php artisan key:generate
+  yarn dev```
+  # instalar dependencias
+  ```npm install
+  ou 
+  yarn init -y```
+  
   # inicializar o projecto
-  # e vualaaaaaa!!
+  ```php artisan migrate
+  hp artisan serve
+  npm run dev```
+  ou 
+  yarn dev```
 
 # Como funcionam as routas 
     Rotas são caminhos que nós escrevemos para acessarmos files html, que em php chamamos de blade. blade estas que estão localizadas nas views.
