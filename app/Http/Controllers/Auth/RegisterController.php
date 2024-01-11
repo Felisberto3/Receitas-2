@@ -43,7 +43,6 @@ class RegisterController extends Controller
              $request-> validate([
                 'first_name' => ['required', 'string', 'max:255'],
                 'last_name' => ['required', 'string', 'max:255'],
-                // 'userType ' => ['required', 'string|in:usuario,administrador'],
                 'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',],
             ]);
@@ -66,6 +65,15 @@ class RegisterController extends Controller
  
     }
 
+    public function showProfile() {
+        return view('layouts.profile');
+    }
+    public function showUser($userId) 
+    {
+        $user = User::all();
+        return response()->json($user);
+    }
+
 
 
     protected function create(array $data)
@@ -73,7 +81,6 @@ class RegisterController extends Controller
         return User::create([
             'first_name'=>$data['first_name'],
             'last_name'=>$data['last_name'],
-            'userType'=> $data['userType'],
             'email'=>$data['email'],
             'password'=>Hash::make($data['password'])
         ]);

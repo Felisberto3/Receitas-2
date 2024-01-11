@@ -25,11 +25,9 @@ class HomeController extends Controller
 
     public function show()
     {
-        if (Auth::id()) {
-            // $receitas = Receitas::all();
+        if ( Auth::id()) {
             
             return view('layouts.home');
-            // return view('layouts.home')->with('receitas',$receitas );
         }
        return  view('app');
     }

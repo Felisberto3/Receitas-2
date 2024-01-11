@@ -1,34 +1,37 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
-use App\Models\Receitas;
+use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class DetalhesController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($receitaId)
+    public function index()
     {
-        $receita = Receitas::find($receitaId);
-     
-        return response()->json($receita);
-        
-        // return view('layouts.detalhes')->with('receita', $receita);
+        //
     }
-    
-    public function showDetailPage($receitaId)
-    {
-        return view('layouts.detalhes')->with('receitaId', $receitaId);
-    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         //
+    }
+    public function showNotification() 
+    {
+
+        return view('layouts.notications');
+    }
+
+    public function myNotification() {
+        // Notification::find($)
     }
 
     /**
@@ -42,9 +45,12 @@ class DetalhesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($userId)
     {
-        //
+
+        $myNotifications = Notification::all();
+
+        return response()->json($myNotifications);
     }
 
     /**

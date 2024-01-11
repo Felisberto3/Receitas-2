@@ -1,43 +1,37 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Receitas;
+use App\Models\Share;
 use Illuminate\Http\Request;
 
-class DetalhesController extends Controller
+class ShareController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($receitaId)
+    public function index()
     {
-        $receita = Receitas::find($receitaId);
-     
-        return response()->json($receita);
-        
-        // return view('layouts.detalhes')->with('receita', $receita);
+        //
     }
-    
-    public function showDetailPage($receitaId)
-    {
-        return view('layouts.detalhes')->with('receitaId', $receitaId);
-    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request,$receitaId)
+    // {
+    //     dd($receitaId);
+    //     new Share(['receita_id'=> $receitaId]);
+    // }
 
     /**
      * Display the specified resource.
