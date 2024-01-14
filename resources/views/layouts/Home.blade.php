@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Receitas</title>
+        <title> Receitas </title>
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/home.css">  
 
@@ -34,9 +34,7 @@
             </nav>
         </div>
         </header>
-
 <!-- ////////////////////////////////////terá componentes aqui;;;;;;;;;;;;;;;; -->
-
             <main>
             @if($errors->any())
                 <div class="alert alert-danger">
@@ -72,9 +70,8 @@
                 
                 @foreach (array_reverse($receitas->all()) as $receita)
                 <div class="card">
-                       <a href="{{ route('detalhes', ['receitaId' => $receita->id ]) }}">
+                       <a  class="PostReceitaImg" href="{{ route('detalhes', ['receitaId' => $receita->id ]) }}">
                        @if(isset($receita->receitaImg ))
-                            <!-- <img  src="public/storage/app/imgs" alt="bkejbew">  -->
                             <img  src="{{ Storage::url($receita->receitaImg) }}" alt="bkejbew"> 
                         @endif
                         </a>

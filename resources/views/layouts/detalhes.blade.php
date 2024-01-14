@@ -32,6 +32,12 @@
             background: red;
             border-radius: 8px;
         }
+        .imgCard img{
+            border-radius: 8px;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
         .tituloDetalhes{
             padding: 5px;
             font-size: 30px;
@@ -75,6 +81,9 @@
     <div class="CardReceitas">
         
         <div class="corpoDetalhes">
+            <div class="imgCard">
+                    <img src="" id="img"></img>
+            </div>
          
 
         </div>
@@ -91,11 +100,13 @@
         
         result = await response.json()
         const corpoDetalhes = document.querySelector('.corpoDetalhes')
-        console.log(result);
+        const ya = result['receitaImg'];
+        // console.log();
+        document.getElementById('img').src =`/storage/${ya.slice(7)}`
+
+        console.log(document.getElementById('img') );
         corpoDetalhes.innerHTML +=`
-        <div class="imgCard">
-                
-        </div>
+        
         <div class="tituloDetalhes">${result['title']}</div>
         <div class="tituloDetalhes">Igrediente: ${result['ingredient']}</div>
         <div class="tituloDetalhes">Tempo de Preparo: ${result['preparationTime']}</div>

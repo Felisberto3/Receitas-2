@@ -3,6 +3,9 @@
   padding: 0;
   font-family: sans-serif;
 }
+img{
+  width: 100px;
+}
 li{
   list-style: none;
 }
@@ -95,6 +98,14 @@ main #publicReceitas input{
     border:1px solid #f5ae50;
     background: #faf4f4;
     font-size: 16px;
+}
+.PostReceitaImg {
+  width: 100%;
+  height: 300px;
+}
+.PostReceitaImg  img{
+  width: 100%;
+  height: 100%;
 }
 #publicReceitas button{
     border-radius: 10px;

@@ -48,24 +48,26 @@
 
             const allNotifies = await response.json()
 
-
+            
+            
+            
             const NotifyContainer = document.querySelector('.NotifyContainer')
-
+            
             for (const notification of allNotifies) {
-                if(notification.receitaUserId === userId){
+                if(notification.receitaUserId === Number(userId)){
                     const { notifiedBy_id } = notification
 
                     const response2 = await fetch(`http://localhost:8000/api/user/${notifiedBy_id}`)
 
                     const notifiedUserData= await response2.json()
 
+                    console.log(notifiedUserData);
+
                     const {first_name,last_name, email } = notifiedUserData[0];
 
                     if (notification.type =='shared') {
                         var notifySMS = ` <span>${first_name} ${last_name} Partilhou a sua receita</span>`
                     }
-
-
 
                     NotifyContainer.innerHTML +=  `
                     <div class="contentNotify">
