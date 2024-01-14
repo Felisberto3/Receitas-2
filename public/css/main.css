@@ -8,3 +8,8 @@
     outline: none;
     background: #f7f5f5;
 }
+
+img{
+    min-width: 250px;
+    max-width: 250px;
+  }
